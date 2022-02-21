@@ -1,5 +1,5 @@
 import {Navbar} from "./Navbar"
-import {axios} from "axios";
+import axios from "axios";
 import{useState} from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { getData,alpha,alphaDesc,date,dateDesc,quality,qualityDesc,filterExplicit } from "../redux/actions";
@@ -7,27 +7,44 @@ import { useEffect } from "react";
 
 export const Search = ()=>{
    
-    const {data}=useSelector((store)=>store.data);
+    const {initdata}=useSelector((store)=>store.data);
     const dispatch=useDispatch();
 
+useEffect(()=>{
+    fetchData();
+},[])
+
     const fetchData = ()=>{
-        axios.fetch("https://fast-reef-22226.herokuapp.com/data").then((dat)=>{
-            console.log(dat);
+        axios.get("https://fast-reef-22226.herokuapp.com/data").then(({data})=>{
+            dispatch(getData(data));
         })
     }
 
+   
 
 
     return (<div>
         <Navbar/>
+        <hr/>
         <div>Sorting</div>
-        <div>
+        <hr/>
+        <div id="search-result">
+
+            <div id="result">
+
+
+
+            </div>
 
         </div>
     </div>);
-            /*
-            {data.map((elmnt)=>(
-                <div></div>
+            
+
+      /*
+                  {initdata.map((elmnt)=>(
+                <div>
+                  {elmnt.title}
+                </div>
             ))}
-            */
+      */
 }
