@@ -1,4 +1,5 @@
 import {
+    GET_DATA,
     SORT_ALPHABETICALLY,
     SORT_ALPHABETICALLY_DESC,
     SORT_BY_DATE,
@@ -8,6 +9,11 @@ import {
     FILTER_EXPLICIT
 } 
 from "./actionTypes"
+
+export const getData=(payload)=>({
+    type:GET_DATA,
+    payload
+})
 
 export const alpha=(payload)=>({
     type:SORT_ALPHABETICALLY,
