@@ -2,8 +2,9 @@ import {Navbar} from "./Navbar"
 import axios from "axios";
 import{useState} from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { getData,alpha,alphaDesc,date,dateDesc,quality,qualityDesc,filterExplicit } from "../redux/actions";
+import { getData,alpha,alphaDesc,date,dateDesc,quality,qualityDesc,filterExplicit,indIdSaving } from "../redux/actions";
 import { useEffect } from "react";
+import {Link} from "react-router-dom";
 
 export const Search = ()=>{
    
@@ -21,8 +22,9 @@ export const Search = ()=>{
         })
     }
 
-
-
+    const Save = (ID)=>{
+        dispatch(indIdSaving(ID));
+    }
 
 
     return loading ? "Loading...":(<div>
@@ -38,13 +40,13 @@ export const Search = ()=>{
                 <div key={elmnt.id}>
                   {elmnt.url}
                   <br/>
-                  {elmnt.title} | {elmnt.author}
+                 <Link to={`page/${elmnt.id}`} ><b onClick={()=>{Save(elmnt.id)}}>{elmnt.title}</b></Link> | {elmnt.author}
                   <br/>
                   {elmnt.description}
                   <br/>
                   Creation Date: {elmnt.creation_date}
                   <br/>
-                  Explicit: {elmnt.explicit}
+                  Explicit: {elmnt.explicit ===true ? "Yes" : "No"}
                   <br/>
                   <br/>
                 </div>

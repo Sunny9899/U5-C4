@@ -6,7 +6,8 @@ import {
     SORT_BY_DATE_DESC,
     SORT_BY_QUALITY,
     SORT_BY_QUALITY_DESC,
-    FILTER_EXPLICIT
+    FILTER_EXPLICIT,
+    ID_SAVING_INDIVIDUAL
 } 
 from "./actionTypes"
 
@@ -47,5 +48,10 @@ export const qualityDesc=(payload)=>({
 
 export const filterExplicit = (payload)=>({
     type:FILTER_EXPLICIT,
+    payload
+})
+
+export const indIdSaving=(payload)=>({
+    type:ID_SAVING_INDIVIDUAL,
     payload
 })
