@@ -30,7 +30,19 @@ export const Search = ()=>{
     return loading ? "Loading...":(<div>
         <Navbar/>
         <hr/>
-        <div>Sorting</div>
+        <div>
+        <button onClick={()=>{
+            initdata.sort(function(a,b){
+                return (a.title-b.title);
+            })
+            dispatch(alpha(initdata));
+        }}>
+            Sort A-Z
+        </button>
+
+
+
+        </div>
         <hr/>
         <div id="search-result">
 

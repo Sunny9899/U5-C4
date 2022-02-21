@@ -8,9 +8,7 @@ export const Home = ()=>{
          <h1>Google</h1>
          <input placeholder="search Google" className="search-box" style={{"width":"400px"}} 
          onKeyDown={(()=>(
-             <div>
             <Link to="/search"/>
-            </div>
          ))}/>
      </div>);
 
