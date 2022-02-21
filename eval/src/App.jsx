@@ -8,9 +8,9 @@ import {Individual} from "./components/Individual";
 function App() {
   return (
     <div className="App">
-     <Navbar/>
      <Routes>
        <Route path="/" element={<Home/>}></Route>
+       <Route path="/search" element={<Navbar/>}></Route>
      </Routes>
     </div>
   );
