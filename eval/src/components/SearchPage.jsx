@@ -7,12 +7,13 @@ import { useEffect } from "react";
 
 export const Search = ()=>{
    
-    const {initdata}=useSelector((store)=>store.data);
+    const {loading,initdata}=useSelector((store)=>store.search);
     const dispatch=useDispatch();
 
-useEffect(()=>{
+
+    useEffect(()=>{
     fetchData();
-},[])
+    },[])
 
     const fetchData = ()=>{
         axios.get("https://fast-reef-22226.herokuapp.com/data").then(({data})=>{
@@ -20,10 +21,11 @@ useEffect(()=>{
         })
     }
 
-   
 
 
-    return (<div>
+
+
+    return loading ? "Loading...":(<div>
         <Navbar/>
         <hr/>
         <div>Sorting</div>
@@ -32,7 +34,21 @@ useEffect(()=>{
 
             <div id="result">
 
-
+            {initdata.map((elmnt)=>(
+                <div key={elmnt.id}>
+                  {elmnt.url}
+                  <br/>
+                  {elmnt.title} | {elmnt.author}
+                  <br/>
+                  {elmnt.description}
+                  <br/>
+                  Creation Date: {elmnt.creation_date}
+                  <br/>
+                  Explicit: {elmnt.explicit}
+                  <br/>
+                  <br/>
+                </div>
+            ))}
 
             </div>
 
@@ -41,10 +57,6 @@ useEffect(()=>{
             
 
       /*
-                  {initdata.map((elmnt)=>(
-                <div>
-                  {elmnt.title}
-                </div>
-            ))}
+
       */
 }
